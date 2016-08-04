@@ -49,10 +49,14 @@ void Deformer::setup(string filePath, ContourFinderSettings settings)
     vector<ofPolyline> lines = contourFinder.getPolylines();
     
     ofLog() << "found contour = " << lines.size();
+    if (lines.size() > 1)
+        ofLogWarning() << "got extra contour for " << filePath << " !!";
     
     if (!lines.empty())
     {
         outline = lines.at(0);
+        
+        ofLog() << "controu area = " << outline.getArea();
         
         outline = outline.getResampledByCount(numOutlineVts);
         

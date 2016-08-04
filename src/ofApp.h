@@ -62,4 +62,5 @@ private:
     
     // debug
     bool bDrawTiny;
+    bool bDrawBigRight;
 };

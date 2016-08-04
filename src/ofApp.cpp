@@ -57,6 +57,7 @@ void ofApp::setup()
     
     // debug
     bDrawTiny = true;
+    bDrawBigRight = false;
 }
 
 void ofApp::update()
@@ -85,7 +86,10 @@ void ofApp::draw()
     {
         ofPushMatrix();
         ofMultMatrix(Globals::projMats.at(0));
-        drawLeft();
+        if (bDrawBigRight)
+            drawRight();
+        else
+            drawLeft();
         ofPopMatrix();
         
         ofPushMatrix();
@@ -111,6 +115,11 @@ void ofApp::keyPressed(int key)
     if (key == 't')
     {
         bDrawTiny = !bDrawTiny;
+    }
+    if (key == OF_KEY_RIGHT)
+    {
+        if (!bDrawTiny)
+            bDrawBigRight = !bDrawBigRight;
     }
 }
 

@@ -18,8 +18,8 @@ void SoundThing::setup()
     left.assign(bufferSize, 0.0);
     right.assign(bufferSize, 0.0);
     volHistory.assign(numHistory, 0.0);
-    soundStream.setInput(this);
-    soundStream.setup(0, 2, 44100, bufferSize, 4);
+    //soundStream.setInput(this);
+    //soundStream.setup(0, 2, 44100, bufferSize, 4);
     
     line.addVertices(getCircularPts(500, ofPoint(0, 0), numHistory));
     line.setClosed(true);

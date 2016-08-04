@@ -7,7 +7,7 @@ void ofApp::setup()
     ofSetVerticalSync(true);
 
     Globals::ELAPSED_TIME = ofGetElapsedTimef();
-    Globals::kinect.setup();
+    //Globals::kinect.setup();
     Globals::projMats.resize(NUM_PROJ);
     Globals::cniParams = ofPtr<CNIParams>(new CNIParams);
     Globals::cam = ofPtr<ofCamera>(new ofCamera);
@@ -64,7 +64,7 @@ void ofApp::update()
 {
     Tweenzor::update(ofGetElapsedTimeMillis());
     Globals::ELAPSED_TIME = ofGetElapsedTimef();
-    Globals::kinect.update();
+    //Globals::kinect.update();
     
     gui.update();
     lMgmt.update();

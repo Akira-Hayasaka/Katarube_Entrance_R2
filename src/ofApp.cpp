@@ -121,6 +121,10 @@ void ofApp::keyPressed(int key)
         if (!bDrawTiny)
             bDrawBigRight = !bDrawBigRight;
     }
+	if (key == 'f')
+	{
+		ofToggleFullscreen();
+	}
 }
 
 void ofApp::drawLeft()
@@ -174,8 +178,8 @@ void ofApp::updateGlitch()
 
 void ofApp::mouseMoved(int x, int y)
 {
-//    float intensity = ofMap(ofGetMouseX(), 0, 1920, 0, 1.0, true);
-//    ofNotifyEvent(Globals::intensityChangedEvent, intensity);
+    float intensity = ofMap(ofGetMouseX(), 0, 1920, 0, 1.0, true);
+    ofNotifyEvent(Globals::intensityChangedEvent, intensity);
 }
 
 void ofApp::onIntensityChanged(float& intensity)

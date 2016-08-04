@@ -1,0 +1,17 @@
+<CNI_params>
+	<Particle_Max_Age>13.5</Particle_Max_Age>
+	<Noise_Magnitude>0.0595</Noise_Magnitude>
+	<Noise_Position_Scale>3.77745</Noise_Position_Scale>
+	<Noise_Time_Scale>0.655345</Noise_Time_Scale>
+	<Noise_Persistence>0.07093</Noise_Persistence>
+	<Wind>0.204082, 0, -0.0408163</Wind>
+    <Start_Color>13, 255, 215, 255</Start_Color>
+    <End_Color>246, 51, 154, 255</End_Color>
+    <Material_Shininess>20</Material_Shininess>
+    <Material_Ambient>50, 50, 50, 255</Material_Ambient>
+    <Material_Specular>255, 255, 255, 255</Material_Specular>
+    <Material_Emmissive>0, 0, 0, 255</Material_Emmissive>
+<CNI_params/>
+<Scale>2000</Scale>
+	<Offset>-275.51, 500, 0</Offset>
+</CNI_params>

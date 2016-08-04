@@ -11,6 +11,28 @@
 
 #include "ofMain.h"
 
+static void setLogToFile(string path)
+{
+	string yyyymmdd = ofGetTimestampString("%Y%m%d%H%M%S%i");
+
+	// keep maximum num of log file
+	ofDirectory dir;
+	dir.open(path);
+	dir.listDir();
+	dir.sort();
+	if (dir.size() > 100)
+	{
+		ofFile log;
+		log.open(path + "/" + dir.getName(0));
+		log.remove();
+	}
+	dir.close();
+
+	// set new log file;
+	string newLog = path + "/" + yyyymmdd + ".log";
+	ofLogToFile(newLog);
+}
+
 static bool isImgFile(string ext)
 {
     if (ext == "jpg" || ext == "JPG" ||

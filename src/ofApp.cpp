@@ -2,6 +2,8 @@
 
 void ofApp::setup()
 {
+	setLogToFile("logs");
+
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);
     ofSetVerticalSync(true);

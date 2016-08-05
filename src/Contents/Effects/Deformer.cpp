@@ -122,23 +122,21 @@ void Deformer::update()
             puppetWarp.setControlPoint(mp.idx, mp.pts);
         }
         
-        if (type == DEFORM && Globals::ELAPSED_TIME - lastSeqTime > 0.12)
+        if (type == DEFORM && Globals::ELAPSED_TIME - lastSeqTime > 0.12 &&
+            morphSeqIdx < Globals::morphSequence.size())
         {
-            float ratio = 0.1;
-            ofFbo f;
-            Globals::morphSequence.push_back(f);
-			Globals::morphSequence.back().allocate(ONESCRN_W * ratio, ONESCRN_H * ratio);
-			Globals::morphSequence.back().begin();
+			Globals::morphSequence.at(morphSeqIdx).begin();
             ofClear(0);
             ofPushMatrix();
-            ofScale(ratio, ratio);
+            ofScale(MORPH_SEQ_RATIO, MORPH_SEQ_RATIO);
             texForBinding.getTexture().bind();
             puppetWarp.getDeformedMesh().draw();
             texForBinding.getTexture().unbind();
             ofPopMatrix();
-			Globals::morphSequence.back().end();
+			Globals::morphSequence.at(morphSeqIdx).end();
             
             lastSeqTime = Globals::ELAPSED_TIME;
+            morphSeqIdx++;
         }
     }
     
@@ -158,8 +156,11 @@ void Deformer::update()
         {
             ofNotifyEvent(finEvent);
             for (auto& f : Globals::morphSequence)
-                f.clear();
-			Globals::morphSequence.clear();
+            {
+                f.begin();
+                ofClear(0);
+                f.end();
+            }
             bDone = true;
         }
     }
@@ -304,13 +305,17 @@ void Deformer::start()
     }
     
     for (auto& f : Globals::morphSequence)
-        f.clear();
-	Globals::morphSequence.clear();
+    {
+        f.begin();
+        ofClear(0);
+        f.end();
+    }
     startMorphingTime = Globals::ELAPSED_TIME;
     bDone = false;
     bMorphing = true;
     lastSeqTime = startMorphingTime;
     seqPos.set(ofRandom(0, APP_W), ofRandom(ONESCRN_H - 100));
+    morphSeqIdx = 0;
 }
 
 void Deformer::draw(ofVec3f rot)
@@ -319,7 +324,7 @@ void Deformer::draw(ofVec3f rot)
     {
         if (type == DEFORM)
         {
-            for (int i = 0; i < Globals::morphSequence.size(); i++)
+            for (int i = 0; i < morphSeqIdx; i++)
             {
                 ofPoint p;
                 if (seqPos.x < APP_W/2)

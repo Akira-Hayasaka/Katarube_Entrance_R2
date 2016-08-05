@@ -25,4 +25,6 @@ static const float KINECT_MAX_DIST = 400.0;
 static const float KINECT_MIN_DIST = 80.0;
 static const float WARP_TWEAK_SCALE = 0.2;
 
+static const float MORPH_SEQ_RATIO = 0.1;
+
 #endif /* Constants_h */

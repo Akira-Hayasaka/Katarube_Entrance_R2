@@ -14,6 +14,16 @@ void ofApp::setup()
     Globals::cniParams = ofPtr<CNIParams>(new CNIParams);
     Globals::cam = ofPtr<ofCamera>(new ofCamera);
     Globals::cam->setupPerspective();
+    for (int i = 0; i < 10; i++)
+    {
+        ofFbo f;
+        Globals::morphSequence.push_back(f);
+        Globals::morphSequence.back().allocate(ONESCRN_W * MORPH_SEQ_RATIO,
+                                               ONESCRN_H * MORPH_SEQ_RATIO);
+        Globals::morphSequence.back().begin();
+        ofClear(0);
+        Globals::morphSequence.back().end();
+    }
     
     Tweenzor::init();
     

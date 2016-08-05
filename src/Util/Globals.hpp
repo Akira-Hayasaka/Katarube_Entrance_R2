@@ -59,6 +59,8 @@ namespace Globals
     extern ofMatrix4x4 kinectMat;
     extern KinectContourTransform leftKinectTrans;
     extern KinectContourTransform rightKinectTrans;
+
+	extern vector<ofFbo> morphSequence;
     
     // cni stuffs
     extern ofPtr<ofCamera> cam;

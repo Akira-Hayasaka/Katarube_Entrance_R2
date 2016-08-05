@@ -111,7 +111,7 @@ private:
     float centroidMovePathIdx;
     
     vector<VertexDef> labelPoints;
-    vector<ofFbo> morphSequence;
+    
     ofVec2f seqPos;
     float lastSeqTime;
 };

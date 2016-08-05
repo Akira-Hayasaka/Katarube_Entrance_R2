@@ -17,6 +17,8 @@ namespace Globals
     ofMatrix4x4 kinectMat;
     KinectContourTransform leftKinectTrans;
     KinectContourTransform rightKinectTrans;
+
+	vector<ofFbo> morphSequence;
     
     // cni stuffs
     ofPtr<ofCamera> cam;

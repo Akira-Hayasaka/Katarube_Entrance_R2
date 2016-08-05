@@ -121,16 +121,14 @@ void Deformer::update()
         {
             puppetWarp.setControlPoint(mp.idx, mp.pts);
         }
-        if (!centroidMovePath.getVertices().empty())
-            puppetWarp.setControlPoint(centroid.idx, centroidMovePath.getVertices().at(centroidMovePathIdx));
         
         if (type == DEFORM && Globals::ELAPSED_TIME - lastSeqTime > 0.12)
         {
             float ratio = 0.1;
             ofFbo f;
-            morphSequence.push_back(f);
-            morphSequence.back().allocate(ONESCRN_W * ratio, ONESCRN_H * ratio);
-            morphSequence.back().begin();
+            Globals::morphSequence.push_back(f);
+			Globals::morphSequence.back().allocate(ONESCRN_W * ratio, ONESCRN_H * ratio);
+			Globals::morphSequence.back().begin();
             ofClear(0);
             ofPushMatrix();
             ofScale(ratio, ratio);
@@ -138,7 +136,7 @@ void Deformer::update()
             puppetWarp.getDeformedMesh().draw();
             texForBinding.getTexture().unbind();
             ofPopMatrix();
-            morphSequence.back().end();
+			Globals::morphSequence.back().end();
             
             lastSeqTime = Globals::ELAPSED_TIME;
         }
@@ -159,9 +157,9 @@ void Deformer::update()
         if (Globals::ELAPSED_TIME - startMorphingTime > totalDur)
         {
             ofNotifyEvent(finEvent);
-            for (auto& f : morphSequence)
+            for (auto& f : Globals::morphSequence)
                 f.clear();
-            morphSequence.clear();
+			Globals::morphSequence.clear();
             bDone = true;
         }
     }
@@ -305,9 +303,9 @@ void Deformer::start()
         }
     }
     
-    for (auto& f : morphSequence)
+    for (auto& f : Globals::morphSequence)
         f.clear();
-    morphSequence.clear();
+	Globals::morphSequence.clear();
     startMorphingTime = Globals::ELAPSED_TIME;
     bDone = false;
     bMorphing = true;
@@ -321,20 +319,20 @@ void Deformer::draw(ofVec3f rot)
     {
         if (type == DEFORM)
         {
-            for (int i = 0; i < morphSequence.size(); i++)
+            for (int i = 0; i < Globals::morphSequence.size(); i++)
             {
                 ofPoint p;
                 if (seqPos.x < APP_W/2)
-                    p.x = seqPos.x + morphSequence.at(i).getWidth() * i;
+                    p.x = seqPos.x + Globals::morphSequence.at(i).getWidth() * i;
                 else
-                    p.x = seqPos.x - morphSequence.at(i).getWidth() * i;
+                    p.x = seqPos.x - Globals::morphSequence.at(i).getWidth() * i;
                 p.y = seqPos.y;
                 ofPushStyle();
                 ofSetColor(ofColor::white, bindTexAlpha);
-                morphSequence.at(i).draw(p.x, p.y);
+				Globals::morphSequence.at(i).draw(p.x, p.y);
                 ofNoFill();
                 ofSetColor(ofColor::darkGray, bindTexAlpha);
-                ofDrawRectangle(p, morphSequence.at(i).getWidth(), morphSequence.at(i).getHeight());
+                ofDrawRectangle(p, Globals::morphSequence.at(i).getWidth(), Globals::morphSequence.at(i).getHeight());
                 ofPopStyle();
             }
         }

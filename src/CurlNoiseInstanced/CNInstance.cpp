@@ -20,7 +20,7 @@ void CNInstance::update()
 {
     if (runState == GROWUP)
     {
-        float dur = 0.1f;
+        float dur = 0.05f;
         float t = Globals::ELAPSED_TIME - growupTime;
         float f = ofMap(t, 0.0, dur, 0.0, 1.0, true);
         scale = ofLerp(0.0, destScale, f);

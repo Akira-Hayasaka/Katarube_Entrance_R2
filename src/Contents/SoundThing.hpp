@@ -42,7 +42,7 @@ private:
     
     ofPolyline line;
     ofPolyline origLine;
-    float volAccumlated;
+    float volIntensity;
     const int numHistory = 2500;
     const float volLeakAmt = 0.035;
     const float volInputScale = 0.1;
@@ -50,6 +50,8 @@ private:
     ofxCv::KalmanPosition kalman;
     float fillAlpha;
     double rot;
+    
+    const float maxVol = 0.17;
 };
 
 #endif /* SoundThing_hpp */

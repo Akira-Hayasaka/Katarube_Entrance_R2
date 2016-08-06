@@ -39,28 +39,27 @@ void SoundThing::setup()
     
     kalman.init(1/100000., 1/10.);
     
+    volIntensity = 0.0;
     rot = 0.0;
 }
 
 void SoundThing::update()
 {
-    scaledVol = ofMap(smoothedVol, 0.0, 0.17, 0.0, 1.0, true);
-    volHistory.push_back(scaledVol);
-    if (volHistory.size() >= numHistory)
-        volHistory.erase(volHistory.begin(), volHistory.begin()+1);
-    
-    volAccumlated += scaledVol * volInputScale;
-    volAccumlated -= volLeakAmt;
-    volAccumlated = ofClamp(volAccumlated, 0.3, 1.0);
+    scaledVol = ofMap(smoothedVol, 0.0, maxVol, 0.0, 1.0, true);
+    volIntensity = ofMap(smoothedVol, 0.0, maxVol, 0.3, 1.0, true);
 
 //    ofVec2f filter(volAccumlated, volAccumlated);
 //    kalman.update(filter);
 //    volAccumlated = kalman.getEstimation().x;
     
-    fillAlpha = ofMap(volAccumlated, 0.3, 1.0, 20, 150, true);
-    rot += ofMap(volAccumlated, 0.3, 1.0, 0.05, 5.0, true);
-    float intensity = ofMap(volAccumlated, 0.3, 1.0, 0.0, 1.0, true);
+    fillAlpha = ofMap(volIntensity, 0.3, 1.0, 20, 150, true);
+    rot += ofMap(volIntensity, 0.3, 1.0, 0.05, 10.0, true);
+    float intensity = ofMap(volIntensity, 0.3, 1.0, 0.0, 1.0, true);
     ofNotifyEvent(Globals::intensityChangedEvent, intensity);
+    
+    volHistory.push_back(scaledVol);
+    if (volHistory.size() >= numHistory)
+        volHistory.erase(volHistory.begin(), volHistory.begin()+1);
     
     for (int i = 0; i < line.getVertices().size(); i++)
     {
@@ -94,7 +93,7 @@ void SoundThing::draw()
     ofSetRectMode(OF_RECTMODE_CENTER);
     ofTranslate(ONESCRN_W/2, APP_H/2);
     ofRotateZ(rot);
-    ofScale(volAccumlated, volAccumlated);
+    ofScale(volIntensity, volIntensity);
     ofPushStyle();
     path.draw();
     ofSetColor(ofColor::white, 180);

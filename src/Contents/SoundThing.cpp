@@ -45,7 +45,6 @@ void SoundThing::setup()
 
 void SoundThing::update()
 {
-    scaledVol = ofMap(smoothedVol, 0.0, maxVol, 0.0, 1.0, true);
     volIntensity = ofMap(smoothedVol, 0.0, maxVol, 0.3, 1.0, true);
 
 //    ofVec2f filter(volAccumlated, volAccumlated);
@@ -56,7 +55,8 @@ void SoundThing::update()
     rot += ofMap(volIntensity, 0.3, 1.0, 0.05, 10.0, true);
     float intensity = ofMap(volIntensity, 0.3, 1.0, 0.0, 1.0, true);
     ofNotifyEvent(Globals::intensityChangedEvent, intensity);
-    
+ 
+    scaledVol = ofMap(smoothedVol, 0.0, maxVol, 0.0, 1.0, true);
     volHistory.push_back(scaledVol);
     if (volHistory.size() >= numHistory)
         volHistory.erase(volHistory.begin(), volHistory.begin()+1);

@@ -2,7 +2,7 @@
 
 void ofApp::setup()
 {
-	setLogToFile("logs");
+//	setLogToFile("logs");
 
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);
@@ -61,8 +61,11 @@ void ofApp::setup()
     glitchCandidtates.push_back(OFXPOSTGLITCH_TWIST);
     glitchCandidtates.push_back(OFXPOSTGLITCH_OUTLINE);
     glitchCandidtates.push_back(OFXPOSTGLITCH_INVERT);
-    glitchCandidtates.push_back(OFXPOSTGLITCH_NOISE);
+    glitchCandidtates.push_back(OFXPOSTGLITCH_SLITSCAN);
     glitchCandidtates.push_back(OFXPOSTGLITCH_SWELL);
+//    glitchCandidtates.push_back(OFXPOSTGLITCH_CR_REDINVERT);
+//    glitchCandidtates.push_back(OFXPOSTGLITCH_CR_BLUEINVERT);
+//    glitchCandidtates.push_back(OFXPOSTGLITCH_CR_GREENINVERT);
     glitch.setFbo(&lMgmt.getFramebuffer());
     
     ofAddListener(Globals::intensityChangedEvent, this, &ofApp::onIntensityChanged);

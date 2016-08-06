@@ -12,11 +12,7 @@ namespace Globals
 {
     float ELAPSED_TIME;
     
-    Kinect kinect;
     vector<ofMatrix4x4> projMats;
-    ofMatrix4x4 kinectMat;
-    KinectContourTransform leftKinectTrans;
-    KinectContourTransform rightKinectTrans;
 
 	vector<ofFbo> morphSequence;
     

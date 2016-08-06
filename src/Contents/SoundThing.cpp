@@ -23,7 +23,8 @@ void SoundThing::setup()
 	vector<ofSoundDevice> devices = soundStream.getDeviceList();
 	for (auto device : devices)
 	{
-		if (ofIsStringInString(device.name, "UAB-80"))
+        if (ofIsStringInString(device.name, "UAB-80") ||
+            ofIsStringInString(device.name, "UAB_80"))
 		{
 			soundStream.setup(device.outputChannels, device.outputChannels, 44100, bufferSize, 4);
 			soundStream.setDevice(device);

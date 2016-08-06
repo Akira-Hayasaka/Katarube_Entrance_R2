@@ -2,7 +2,9 @@
 
 void ofApp::setup()
 {
+#ifdef WIN32
 	setLogToFile("logs");
+#endif
 
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);
@@ -140,6 +142,10 @@ void ofApp::keyPressed(int key)
 	{
 		ofToggleFullscreen();
 	}
+    if (key == 'w')
+    {
+        gui.saveProjWarp();
+    }
 }
 
 void ofApp::drawLeft()

@@ -76,7 +76,6 @@
 		D31F5C1B140C59B2AF1533A8 /* registration.c in Sources */ = {isa = PBXBuildFile; fileRef = 71958293AC5292DE4B7C619D /* registration.c */; };
 		D3301F6A0B43BB293ED97C1D /* ofxCvShortImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8A4DD23693DFAB8EC05FAA5D /* ofxCvShortImage.cpp */; };
 		DB5ACEAD8D937B5DC0200B20 /* WmlVector4.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 281AF7A144E192043F1095E7 /* WmlVector4.cpp */; };
-		E0889DC898405793070CA163 /* Kinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A7CB9A61230A815A082F9B87 /* Kinect.cpp */; };
 		E12352A660BDF39D1D56CC30 /* WmlBox2.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4E608C65122B0B78B3F41A09 /* WmlBox2.cpp */; };
 		E212C821D1064B92DD953A42 /* ofxCvHaarFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A16CBF2E8CFE43AF54FE6F5 /* ofxCvHaarFinder.cpp */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
@@ -352,7 +351,6 @@
 		A4C15A8117981F22582F6F4F /* ofxTriangleMesh.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxTriangleMesh.cpp; path = addons/ofxTriangleMesh/src/ofxTriangleMesh.cpp; sourceTree = SOURCE_ROOT; };
 		A6FE86EC90D1FA4125516EAA /* Shaker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Shaker.h; path = addons/ofxPostGlitch/src/shaders/Shaker.h; sourceTree = SOURCE_ROOT; };
 		A770C8D74DA82B9944013381 /* gpu_perf.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = gpu_perf.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/ts/gpu_perf.hpp; sourceTree = SOURCE_ROOT; };
-		A7CB9A61230A815A082F9B87 /* Kinect.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = Kinect.cpp; path = src/Kinect/Kinect.cpp; sourceTree = SOURCE_ROOT; };
 		A9C85208C7E45FB9D1926789 /* wimage.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = wimage.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/wimage.hpp; sourceTree = SOURCE_ROOT; };
 		AA56317A2F39C3BB0FA205FF /* fdog.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = fdog.h; path = addons/ofxCv/libs/CLD/include/CLD/fdog.h; sourceTree = SOURCE_ROOT; };
 		AB2AE477F82ACF17D0121166 /* mat.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = mat.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/core/mat.hpp; sourceTree = SOURCE_ROOT; };
@@ -400,7 +398,6 @@
 		C76DE5C29BDBD2CAA1DD0021 /* ofxCvContourFinder.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxCvContourFinder.cpp; path = ../../../addons/ofxOpenCv/src/ofxCvContourFinder.cpp; sourceTree = SOURCE_ROOT; };
 		C837A1D0412124A4103C6B0F /* RigidMeshDeformer2D.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = RigidMeshDeformer2D.h; path = addons/ofxPuppet/libs/rigidAsPossibleMesh/src/RigidMeshDeformer2D.h; sourceTree = SOURCE_ROOT; };
 		C88333E71C9457E441C33474 /* ofxButton.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxButton.cpp; path = ../../../addons/ofxGui/src/ofxButton.cpp; sourceTree = SOURCE_ROOT; };
-		C8A7E6146E3CA887D3032447 /* Kinect.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Kinect.hpp; path = src/Kinect/Kinect.hpp; sourceTree = SOURCE_ROOT; };
 		CB04AB5C9538EA0B2DD9E1F1 /* ofxQuadWarp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxQuadWarp.cpp; path = addons/ofxQuadWarp/src/ofxQuadWarp.cpp; sourceTree = SOURCE_ROOT; };
 		CBDE84185E2969BA4AB209FC /* general.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = general.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/general.h; sourceTree = SOURCE_ROOT; };
 		CC89F56BED4865D488E37E22 /* Glow.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Glow.h; path = addons/ofxPostGlitch/src/shaders/Glow.h; sourceTree = SOURCE_ROOT; };
@@ -1032,15 +1029,6 @@
 			name = src;
 			sourceTree = "<group>";
 		};
-		7F51B1764DB9C6A56597ABF9 /* Kinect */ = {
-			isa = PBXGroup;
-			children = (
-				A7CB9A61230A815A082F9B87 /* Kinect.cpp */,
-				C8A7E6146E3CA887D3032447 /* Kinect.hpp */,
-			);
-			name = Kinect;
-			sourceTree = "<group>";
-		};
 		84AAE9C1DC5FB28E8325C09D /* Effects */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,7 +1426,6 @@
 				01343DE8D05D64591A4FDA37 /* GUI.hpp */,
 				91E0F1E74A54C4944333B8DF /* Contents */,
 				32655EF6321C3C4230472E59 /* CurlNoiseInstanced */,
-				7F51B1764DB9C6A56597ABF9 /* Kinect */,
 				9E4FC7FE1041D81B7931878E /* Util */,
 			);
 			path = src;
@@ -1638,7 +1625,6 @@
 				141855316163D563D304C6D0 /* CurlNoiseInstanced.cpp in Sources */,
 				B4FCD8DE0B28DDACC7367ACA /* FboPingPong.cpp in Sources */,
 				8D22D0C2548C74560D6C5172 /* GUI.cpp in Sources */,
-				E0889DC898405793070CA163 /* Kinect.cpp in Sources */,
 				64450749B601B99D10BB3EBF /* Globals.cpp in Sources */,
 				8F2BD8F339C762FA94AC4526 /* Warper.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,

@@ -29,26 +29,13 @@ public:
     bool isVisible() { return !bHide; }
     
     void saveProjWarp();
-    void saveKinectWarp();
     
 private:
-    
-    void onleftKinectPosChangedX(float& arg);
-    void onleftKinectPosChangedY(float& arg);
-    void onleftKinectAngChanged(float& arg);
-    void onleftKinectScaleChanged(float& arg);
-    void onrightKinectPosChangedX(float& arg);
-    void onrightKinectPosChangedY(float& arg);
-    void onrightKinectAngChanged(float& arg);
-    void onrightKinectScaleChanged(float& arg);
     
     bool bHide;
     
     // drawing contourFinder settings
     ofxPanel drawingCFSetting;
-    
-    // kinect device & contour
-    ofxPanel kinectGUI;
     
     // cni gui
     ofxPanel cniGui;
@@ -58,12 +45,6 @@ private:
     
     // proj warp
     vector<Warper> projWarpers;
-    
-    // kinect warp
-    Warper kinectWarper;
-    ofFbo kinectFbo;
-    vector<ofPolyline> contours;
-    vector<ofPath> contourPaths;
 };
 
 #endif /* GUI_hpp */

@@ -10,14 +10,6 @@
 #define Globals_hpp
 
 #include "ofMain.h"
-#include "Kinect.hpp"
-
-struct KinectContourTransform
-{
-    ofVec2f pos;
-    float ang;
-    float scale;
-};
 
 struct CNIParams
 {
@@ -54,11 +46,7 @@ namespace Globals
 {
     extern float ELAPSED_TIME;
     
-    extern Kinect kinect;
     extern vector<ofMatrix4x4> projMats;
-    extern ofMatrix4x4 kinectMat;
-    extern KinectContourTransform leftKinectTrans;
-    extern KinectContourTransform rightKinectTrans;
 
 	extern vector<ofFbo> morphSequence;
     

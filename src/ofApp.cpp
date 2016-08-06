@@ -2,7 +2,7 @@
 
 void ofApp::setup()
 {
-//	setLogToFile("logs");
+	setLogToFile("logs");
 
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);

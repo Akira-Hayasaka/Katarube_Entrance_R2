@@ -60,6 +60,10 @@ void GUI::setup()
     
     cniGui.setup(Globals::cniParams->params, "settings/CNIParams.xml");
     cniGui.loadFromFile("settings/CNIParams.xml");
+
+	miscGui.setup("misc", "settings/misc.xml");
+	miscGui.add(Globals::micSensitivity.set("mic sensitivity", 0.07, 0.01, 1.0));
+	miscGui.loadFromFile("settings/misc.xml");
     
     // proj warp
     ofVec2f tweakProjRes = ofVec2f(PROJ_W, PROJ_H) * WARP_TWEAK_SCALE;
@@ -102,6 +106,7 @@ void GUI::setup()
     kinectGUI.setPosition(ofPoint(10, APP_H/2));
     drawingCFSetting.setPosition(ofPoint(kinectGUI.getWidth() + 10, APP_H/2));
     cniGui.setPosition(ofPoint(kinectGUI.getWidth() + drawingCFSetting.getWidth() + 10, APP_H/2));
+	miscGui.setPosition(ofPoint(kinectGUI.getWidth() + drawingCFSetting.getWidth() + cniGui.getWidth() + 10, APP_H/2));
 }
 
 void GUI::update()
@@ -227,6 +232,7 @@ void GUI::draw()
         kinectGUI.draw();
         drawingCFSetting.draw();
         cniGui.draw();
+		miscGui.draw();
     }
 }
 

@@ -90,6 +90,8 @@ namespace Globals
     extern ofParameter<float> rightKinectPosY;
     extern ofParameter<float> rightKinectAng;
     extern ofParameter<float> rightKinectScale;
+
+	extern ofParameter<float> micSensitivity;
     
     // events
     extern ofEvent<float> intensityChangedEvent;

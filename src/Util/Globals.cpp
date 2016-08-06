@@ -48,6 +48,8 @@ namespace Globals
     ofParameter<float> rightKinectPosY;
     ofParameter<float> rightKinectAng;
     ofParameter<float> rightKinectScale;
+
+	ofParameter<float> micSensitivity;
     
     // events
     ofEvent<float> intensityChangedEvent;

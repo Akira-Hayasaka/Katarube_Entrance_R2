@@ -19,7 +19,18 @@ void SoundThing::setup()
     right.assign(bufferSize, 0.0);
     volHistory.assign(numHistory, 0.0);
     soundStream.setInput(this);
-    soundStream.setup(0, 1, 44100, bufferSize, 4);
+
+	vector<ofSoundDevice> devices = soundStream.getDeviceList();
+	for (auto device : devices)
+	{
+		if (ofIsStringInString(device.name, "UAB-80"))
+		{
+			soundStream.setup(device.outputChannels, device.outputChannels, 44100, bufferSize, 4);
+			soundStream.setDevice(device);
+			ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
+			break;
+		}
+	}
     
     line.addVertices(getCircularPts(500, ofPoint(0, 0), numHistory));
     line.setClosed(true);
@@ -114,5 +125,6 @@ void SoundThing::audioIn(float * input, int bufferSize, int nChannels)
     curVol = sqrt(curVol);
     
     smoothedVol *= 0.93;
-    smoothedVol += 0.07 * curVol;
+
+    smoothedVol += Globals::micSensitivity * curVol;
 }

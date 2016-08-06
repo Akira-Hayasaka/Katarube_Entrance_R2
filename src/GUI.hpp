@@ -52,6 +52,9 @@ private:
     
     // cni gui
     ofxPanel cniGui;
+
+	// misc gui
+	ofxPanel miscGui;
     
     // proj warp
     vector<Warper> projWarpers;

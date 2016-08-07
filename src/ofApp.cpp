@@ -31,6 +31,7 @@ void ofApp::setup()
     
     gui.setup();
     gui.hide();
+	ofHideCursor();
     
     se.setup();
     
@@ -75,7 +76,7 @@ void ofApp::setup()
     ofAddListener(Globals::intensityChangedEvent, this, &ofApp::onIntensityChanged);
     
     // debug
-    bDrawTiny = true;
+    bDrawTiny = false;
     bDrawBigRight = false;
 }
 
@@ -130,6 +131,11 @@ void ofApp::keyPressed(int key)
     if (key == ' ')
     {
         gui.toggleVisible();
+
+		if (gui.isVisible())
+			ofShowCursor();
+		else
+			ofHideCursor();
     }
     if (key == 't')
     {

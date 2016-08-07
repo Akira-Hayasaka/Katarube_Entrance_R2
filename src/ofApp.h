@@ -10,6 +10,7 @@
 #include "Utils.h"
 #include "Constants.h"
 #include "Globals.hpp"
+#include "SE.hpp"
 
 #include "GUI.hpp"
 #include "Deforming.hpp"
@@ -45,6 +46,8 @@ private:
     void onIntensityChanged(float& intensity);
     
     GUI gui;
+    
+    SE se;
 
     ofxLayer::Manager lMgmt;
     Deforming* deforming;

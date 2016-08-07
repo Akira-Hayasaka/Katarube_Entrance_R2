@@ -20,6 +20,7 @@ void SoundThing::setup()
     volHistory.assign(numHistory, 0.0);
     soundStream.setInput(this);
 
+    bFound = false;
 	vector<ofSoundDevice> devices = soundStream.getDeviceList();
 	for (auto device : devices)
 	{
@@ -29,6 +30,7 @@ void SoundThing::setup()
 			soundStream.setup(device.outputChannels, device.outputChannels, 44100, bufferSize, 4);
 			soundStream.setDevice(device);
 			ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
+            bFound = true;
 			break;
 		}
 	}
@@ -54,7 +56,14 @@ void SoundThing::update()
     fillAlpha = ofMap(volIntensity, 0.3, 1.0, 20, 150, true);
     rot += ofMap(volIntensity, 0.3, 1.0, 0.05, 10.0, true);
     float intensity = ofMap(volIntensity, 0.3, 1.0, 0.0, 1.0, true);
-    ofNotifyEvent(Globals::intensityChangedEvent, intensity);
+    
+    if (bFound)
+        ofNotifyEvent(Globals::intensityChangedEvent, intensity);
+    else
+    {
+        float none = 0.0;
+        ofNotifyEvent(Globals::intensityChangedEvent, none);
+    }
  
     scaledVol = ofMap(smoothedVol, 0.0, maxVol, 0.0, 1.0, true);
     volHistory.push_back(scaledVol);

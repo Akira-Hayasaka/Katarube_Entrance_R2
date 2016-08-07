@@ -98,5 +98,7 @@ void Deforming::onFinishEvent()
     deformTo->start();
     restoreFrom->start();
     
+    ofNotifyEvent(Globals::makeRandomSoundEvent);
+    
     ofAddListener(restoreFrom->finEvent, this, &Deforming::onFinishEvent);
 }

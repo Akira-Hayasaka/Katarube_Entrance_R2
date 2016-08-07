@@ -32,6 +32,8 @@ void ofApp::setup()
     gui.setup();
     gui.hide();
     
+    se.setup();
+    
     lMgmt.setup(APP_W, APP_H);
     deforming = lMgmt.createLayer<Deforming>(1.0);
 

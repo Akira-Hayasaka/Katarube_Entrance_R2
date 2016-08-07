@@ -33,6 +33,8 @@ public:
     
 private:
     
+    bool bFound;
+    
     ofSoundStream soundStream;
     vector<float> left;
     vector<float> right;

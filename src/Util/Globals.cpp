@@ -49,4 +49,5 @@ namespace Globals
     
     // events
     ofEvent<float> intensityChangedEvent;
+    ofEvent<void> makeRandomSoundEvent;
 }

@@ -83,6 +83,7 @@
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E55DEEF784A10419E444669E /* flags.c in Sources */ = {isa = PBXBuildFile; fileRef = 682082DEC78C75C8FB18B7DB /* flags.c */; };
 		E68F33FFBC7F06E5AA6CA08E /* LinearAlgebra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35EDCBDDC418E12FB4B1D315 /* LinearAlgebra.cpp */; };
+		E9F778B71D56F3890072BE16 /* SE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778B51D56F3890072BE16 /* SE.cpp */; settings = {ASSET_TAGS = (); }; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
 		F4135EEFC911E9ED211FB6F9 /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = CF528C0E8DBFF5C31E8D6529 /* core.c */; };
 		FAF56D62CD9CC8FC64320442 /* WmlLinearSystemExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB38C1864350FE4A17F18D /* WmlLinearSystemExt.cpp */; };
@@ -457,6 +458,8 @@
 		E8FFD32E1883966A6C0FC4DC /* GUI.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = GUI.cpp; path = src/GUI.cpp; sourceTree = SOURCE_ROOT; };
 		E90542C149C83316678AB011 /* cxmisc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = cxmisc.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv/cxmisc.h; sourceTree = SOURCE_ROOT; };
 		E9845C839527B8DF7613D49D /* CNInstance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CNInstance.cpp; path = src/CurlNoiseInstanced/CNInstance.cpp; sourceTree = SOURCE_ROOT; };
+		E9F778B51D56F3890072BE16 /* SE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SE.cpp; path = Util/SE.cpp; sourceTree = "<group>"; };
+		E9F778B61D56F3890072BE16 /* SE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SE.hpp; path = Util/SE.hpp; sourceTree = "<group>"; };
 		EABECCA10B3B22B8DD9090CB /* Helpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Helpers.h; path = addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h; sourceTree = SOURCE_ROOT; };
 		EBBA82550412B77EFA70AE87 /* funcattrib.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = funcattrib.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/device/funcattrib.hpp; sourceTree = SOURCE_ROOT; };
 		ECC34C470C60F0A2AE2761B1 /* random.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = random.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/random.h; sourceTree = SOURCE_ROOT; };
@@ -1102,6 +1105,8 @@
 				DED625E9C3697D70F1E7AC8A /* Utils.h */,
 				3D2EAAD1F494C808851DE47C /* Warper.cpp */,
 				93EFF49E7938F1393B1B71F4 /* Warper.hpp */,
+				E9F778B51D56F3890072BE16 /* SE.cpp */,
+				E9F778B61D56F3890072BE16 /* SE.hpp */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -1637,6 +1642,7 @@
 				1CD33E884D9E3358252E82A1 /* ofxToggle.cpp in Sources */,
 				7ADB04AF67C568EAFAEBA546 /* ofxKinectExtras.cpp in Sources */,
 				686B0DF6249B52E1A85B39EC /* ofxKinect.cpp in Sources */,
+				E9F778B71D56F3890072BE16 /* SE.cpp in Sources */,
 				0F8F016776681D468C0D0949 /* audio.c in Sources */,
 				ACE7DC9A3223ED5EE1B80074 /* cameras.c in Sources */,
 				F4135EEFC911E9ED211FB6F9 /* core.c in Sources */,

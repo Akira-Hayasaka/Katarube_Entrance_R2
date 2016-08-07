@@ -34,9 +34,6 @@
 		<ClCompile Include="src\GUI.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
-		<ClCompile Include="src\Kinect\Kinect.cpp">
-			<Filter>src\Kinect</Filter>
-		</ClCompile>
 		<ClCompile Include="src\main.cpp">
 			<Filter>src</Filter>
 		</ClCompile>
@@ -278,9 +275,6 @@
 		</Filter>
 		<Filter Include="src\CurlNoiseInstanced">
 			<UniqueIdentifier>{DAC1A691-92E6-35F5-8437-4BE8}</UniqueIdentifier>
-		</Filter>
-		<Filter Include="src\Kinect">
-			<UniqueIdentifier>{74CDBF59-28A3-0DC1-AAA8-FA10}</UniqueIdentifier>
 		</Filter>
 		<Filter Include="src\Util">
 			<UniqueIdentifier>{8527FFB1-9ADE-DC59-7DA2-8582}</UniqueIdentifier>
@@ -565,9 +559,6 @@
 		</ClInclude>
 		<ClInclude Include="src\GUI.hpp">
 			<Filter>src</Filter>
-		</ClInclude>
-		<ClInclude Include="src\Kinect\Kinect.hpp">
-			<Filter>src\Kinect</Filter>
 		</ClInclude>
 		<ClInclude Include="src\ofApp.h">
 			<Filter>src</Filter>

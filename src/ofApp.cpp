@@ -31,6 +31,7 @@ void ofApp::setup()
     
     gui.setup();
     gui.hide();
+	ofHideCursor();
     
     lMgmt.setup(APP_W, APP_H);
     deforming = lMgmt.createLayer<Deforming>(1.0);
@@ -73,7 +74,7 @@ void ofApp::setup()
     ofAddListener(Globals::intensityChangedEvent, this, &ofApp::onIntensityChanged);
     
     // debug
-    bDrawTiny = true;
+    bDrawTiny = false;
     bDrawBigRight = false;
 }
 
@@ -128,6 +129,11 @@ void ofApp::keyPressed(int key)
     if (key == ' ')
     {
         gui.toggleVisible();
+
+		if (gui.isVisible())
+			ofShowCursor();
+		else
+			ofHideCursor();
     }
     if (key == 't')
     {

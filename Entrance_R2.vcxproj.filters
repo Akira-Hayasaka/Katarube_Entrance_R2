@@ -43,6 +43,9 @@
 		<ClCompile Include="src\Util\Globals.cpp">
 			<Filter>src\Util</Filter>
 		</ClCompile>
+		<ClCompile Include="src\Util\SE.cpp">
+			<Filter>src\Util</Filter>
+		</ClCompile>
 		<ClCompile Include="src\Util\Warper.cpp">
 			<Filter>src\Util</Filter>
 		</ClCompile>
@@ -567,6 +570,9 @@
 			<Filter>src\Util</Filter>
 		</ClInclude>
 		<ClInclude Include="src\Util\Globals.hpp">
+			<Filter>src\Util</Filter>
+		</ClInclude>
+		<ClInclude Include="src\Util\SE.hpp">
 			<Filter>src\Util</Filter>
 		</ClInclude>
 		<ClInclude Include="src\Util\Utils.h">

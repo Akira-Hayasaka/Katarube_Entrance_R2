@@ -183,6 +183,7 @@
 		<ClCompile Include="src\CurlNoiseInstanced\FboPingPong.cpp" />
 		<ClCompile Include="src\GUI.cpp" />
 		<ClCompile Include="src\Util\Globals.cpp" />
+		<ClCompile Include="src\Util\SE.cpp" />
 		<ClCompile Include="src\Util\Warper.cpp" />
 		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
 		<ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
@@ -268,6 +269,7 @@
 		<ClInclude Include="src\GUI.hpp" />
 		<ClInclude Include="src\Util\Constants.h" />
 		<ClInclude Include="src\Util\Globals.hpp" />
+		<ClInclude Include="src\Util\SE.hpp" />
 		<ClInclude Include="src\Util\Utils.h" />
 		<ClInclude Include="src\Util\Warper.hpp" />
 		<ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />

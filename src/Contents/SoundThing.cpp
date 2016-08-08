@@ -27,7 +27,7 @@ void SoundThing::setup()
         if (ofIsStringInString(device.name, "UAB-80") ||
             ofIsStringInString(device.name, "UAB_80"))
 		{
-			soundStream.setup(device.outputChannels, device.outputChannels, 44100, bufferSize, 4);
+			soundStream.setup(0, 2, 44100, bufferSize, 4);
 			soundStream.setDevice(device);
 			ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
             bFound = true;

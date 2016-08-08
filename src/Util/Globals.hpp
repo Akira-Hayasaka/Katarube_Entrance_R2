@@ -83,7 +83,8 @@ namespace Globals
     
     // events
     extern ofEvent<float> intensityChangedEvent;
-    extern ofEvent<void> makeRandomSoundEvent;
+    extern ofEvent<void> makeRandomMorphSoundEvent;
+    extern ofEvent<void> makeRandomAttackSoundEvent;
 }
 
 #endif /* Globals_hpp */

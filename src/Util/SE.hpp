@@ -30,12 +30,14 @@ class SE
 public:
     
     void setup();
-    void makeSound(string sndName);
-    void makeRdmSound();
+    void makeRdmMorphSound();
+    void makeRdmAttackSound();
     
 private:
     
-    vector<Sound> snds;
+    Sound drone;
+    vector<Sound> morph;
+    vector<Sound> attack;
 };
 
 #endif /* SE_hpp */

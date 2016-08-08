@@ -44,6 +44,7 @@ void CNInstance::growup()
     {
         growupTime = Globals::ELAPSED_TIME;
         runState = GROWUP;
+        ofNotifyEvent(Globals::makeRandomAttackSoundEvent);
     }
 }
 

@@ -16,7 +16,11 @@ bool Sound::loadSound(string fileName, bool stream)
 
 void SE::setup()
 {
-    ofDirectory dir("sounds");
+    drone.load("sounds/pad/katarube_pad.wav");
+    drone.setMultiPlay(false);
+    drone.setLoop(OF_LOOP_NORMAL);
+    
+    ofDirectory dir("sounds/morph");
     dir.listDir();
     for (int i = 0; i < dir.size(); i++)
     {
@@ -24,28 +28,36 @@ void SE::setup()
         snd.load(dir.getFile(i).getAbsolutePath());
         snd.setMultiPlay(true);
         snd.setLoop(false);
-        snds.push_back(snd);
+        morph.push_back(snd);
     }
     dir.close();
     
-    ofAddListener(Globals::makeRandomSoundEvent, this, &SE::makeRdmSound);
-}
-
-void SE::makeSound(string sndName)
-{
-    for (auto snd : snds)
+    dir.open("sounds/attack");
+    dir.listDir();
+    for (int i = 0; i < dir.size(); i++)
     {
-        if (ofIsStringInString(snd.getFileName(), sndName))
-        {
-            snd.play();
-            break;
-        }
+        Sound snd;
+        snd.load(dir.getFile(i).getAbsolutePath());
+        snd.setMultiPlay(true);
+        snd.setLoop(false);
+        attack.push_back(snd);
     }
+    dir.close();
+    
+    drone.play();
+    
+    ofAddListener(Globals::makeRandomMorphSoundEvent, this, &SE::makeRdmMorphSound);
+    ofAddListener(Globals::makeRandomAttackSoundEvent, this, &SE::makeRdmAttackSound);
 }
 
-void SE::makeRdmSound()
+void SE::makeRdmMorphSound()
 {
-    int rdm = ofRandom(snds.size());
-    snds.at(rdm).setSpeed(ofRandom(0.2, 0.8));
-    snds.at(rdm).play();
+    int rdm = ofRandom(morph.size());
+    morph.at(rdm).play();
+}
+
+void SE::makeRdmAttackSound()
+{
+    int rdm = ofRandom(attack.size());
+    attack.at(rdm).play();
 }

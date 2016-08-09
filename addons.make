@@ -1,5 +1,4 @@
 ofxGui
-ofxKinect
 ofxOpenCv
 ofxXmlSettings
 addons/ofxCv

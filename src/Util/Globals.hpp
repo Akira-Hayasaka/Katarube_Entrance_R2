@@ -61,24 +61,6 @@ namespace Globals
     // params
     extern ofParameter<float> minArea, maxArea, threshold;
     extern ofParameter<bool> holes;
-    
-    extern ofParameter<int> kinectAngle;
-    extern ofParameter<float> kinectNearThresh;
-    extern ofParameter<float> kinectFarThresh;
-    extern ofParameter<float> kinectAdjustAngle;
-    extern ofParameter<float> contourMinArea;
-    extern ofParameter<float> contourMaxArea;
-    extern ofParameter<float> contourThreshold;
-    extern ofParameter<bool> contourFindHole;
-    extern ofParameter<float> leftKinectPosX;
-    extern ofParameter<float> leftKinectPosY;
-    extern ofParameter<float> leftKinectAng;
-    extern ofParameter<float> leftKinectScale;
-    extern ofParameter<float> rightKinectPosX;
-    extern ofParameter<float> rightKinectPosY;
-    extern ofParameter<float> rightKinectAng;
-    extern ofParameter<float> rightKinectScale;
-
 	extern ofParameter<float> micSensitivity;
     
     // events

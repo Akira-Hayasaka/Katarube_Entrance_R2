@@ -31,6 +31,7 @@ public:
 private:
     
     int getRdmIdx();
+    void checkDeformBegin();
     void onFinishEvent();
     
     ofDirectory masterDir;
@@ -39,6 +40,10 @@ private:
     ofPtr<Deformer> deformTo;
     ofPtr<Deformer> restoreFrom;
     vector<ofPtr<Deformer> > storedPuppets;
+    
+    bool bDeforming;
+    float lastDeformTime;
+    float deformInterval;
     
     ofVec3f rot;    
 };

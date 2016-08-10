@@ -25,6 +25,7 @@ void SE::setup()
     okimochi.setMultiPlay(false);
     okimochi.setLoop(OF_LOOP_NORMAL);
     okimochi.play();
+    okimochi.setVolume(0.0);
     okimochi.setPosition(ofRandomuf());
     okimochiVol = 0.0;
     

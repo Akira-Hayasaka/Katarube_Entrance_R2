@@ -109,7 +109,7 @@ void Deformer::setup(string filePath, ContourFinderSettings settings)
         }
     }
     
-    puppetWarp.update();
+    //puppetWarp.update();
     bMorphing = false;
     type = NONE;
 }

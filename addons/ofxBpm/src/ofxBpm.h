@@ -26,13 +26,14 @@ void testApp::play(void){
 #include "ofMain.h"
 #include "ofThread.h"
 
+static const float OFX_BPM_MAX = 300.;
+static const float  OFX_BPM_DEFAULT = 120.;
+static const float OFX_BPM_MIN = 1.;
+static const int OFX_BPM_TICK = 960;
+
 class ofxBpm : private ofThread{
     
 public:
-    static const float OFX_BPM_MAX;
-    static const float  OFX_BPM_DEFAULT;
-    static const float OFX_BPM_MIN;
-    static const int OFX_BPM_TICK;
 
     explicit ofxBpm(float bpm = OFX_BPM_DEFAULT,int beatPerBar = 4);
     
@@ -67,8 +68,8 @@ private:
     inline int getCountOfTick() const;
 };
 
-//init
-const float ofxBpm::OFX_BPM_MAX = 300. ;
-const float ofxBpm::OFX_BPM_DEFAULT = 120.;
-const float ofxBpm::OFX_BPM_MIN = 1.;
-const int ofxBpm::OFX_BPM_TICK = 960;
+////init
+//const float ofxBpm::OFX_BPM_MAX = 300. ;
+//const float ofxBpm::OFX_BPM_DEFAULT = 120.;
+//const float ofxBpm::OFX_BPM_MIN = 1.;
+//const int ofxBpm::OFX_BPM_TICK = 960;

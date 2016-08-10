@@ -33,4 +33,6 @@ namespace Globals
     ofEvent<float> intensityChangedEvent;
     ofEvent<void> makeRandomMorphSoundEvent;
     ofEvent<void> makeRandomAttackSoundEvent;
+    ofEvent<void> makeRandomPianoSoundEvent;
+    ofEvent<void> makeRandomOkimochiSoundEvent;
 }

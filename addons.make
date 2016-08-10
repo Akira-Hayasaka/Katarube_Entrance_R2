@@ -8,3 +8,4 @@ addons/ofxLayer
 addons/ofxTweenzor
 addons/ofxQuadWarp
 addons/ofxPostGlitch
+addons/ofxBpm

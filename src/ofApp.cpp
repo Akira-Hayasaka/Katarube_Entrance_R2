@@ -34,13 +34,15 @@ void ofApp::setup()
 	ofHideCursor();
     
     se.setup();
+    bpm.setBpm(50);
+    bpm.start();
     
     lMgmt.setup(APP_W, APP_H);
     deforming = lMgmt.createLayer<Deforming>(1.0);
 
     nowExibit = lMgmt.createLayer<NowExibit>(1.0);
     texFlow = lMgmt.createLayer<TexFlow>(1.0);
-    soundThing = lMgmt.createLayer<SoundThing>(1.0);        
+    soundThing = lMgmt.createLayer<SoundThing>(1.0);
     
     numMaxRunningGlitch = 1;
     glitch.setFx(OFXPOSTGLITCH_CONVERGENCE, false);
@@ -74,10 +76,12 @@ void ofApp::setup()
     glitch.setFbo(&lMgmt.getFramebuffer());
     
     ofAddListener(Globals::intensityChangedEvent, this, &ofApp::onIntensityChanged);
+    ofAddListener(bpm.beatEvent, this, &ofApp::onBeat);
     
     // debug
     bDrawTiny = false;
     bDrawBigRight = false;
+    beatAlpha = 0.0;
 }
 
 void ofApp::update()
@@ -88,9 +92,13 @@ void ofApp::update()
     
     gui.update();
     lMgmt.update();
-    
+    se.update();
     updateGlitch();
     glitch.generateFx();
+    
+    // debug
+    beatAlpha -= 5;
+    beatAlpha = ofClamp(beatAlpha, 0, 255);
 }
 
 void ofApp::draw()
@@ -122,8 +130,13 @@ void ofApp::draw()
     
     gui.draw();
     
-    ofDrawBitmapStringHighlight("tw:" + ofToString(Tweenzor::getSize()), 10, ofGetHeight() - 40);
-    ofDrawBitmapStringHighlight("fps:" + ofToString(ofGetFrameRate(), 2), 10, ofGetHeight() - 20);
+    // debug
+    ofPushStyle();
+    ofSetColor(ofColor::white, beatAlpha);
+    ofDrawCircle(20, APP_H - 100, 10);
+    ofPopStyle();
+    ofDrawBitmapStringHighlight("tw:" + ofToString(Tweenzor::getSize()), 10, APP_H - 40);
+    ofDrawBitmapStringHighlight("fps:" + ofToString(ofGetFrameRate(), 2), 10, APP_H - 20);
 }
 
 void ofApp::keyPressed(int key)
@@ -221,6 +234,18 @@ void ofApp::onIntensityChanged(float& intensity)
     {
         glitchIntensity = 0.0;
     }
+}
+
+void ofApp::onBeat()
+{
+    beatAlpha = 255;
+    float rdm = ofRandomuf();
+    if (rdm < 0.3)
+        ofNotifyEvent(Globals::makeRandomPianoSoundEvent);
+    
+    rdm = ofRandomuf();
+    if (rdm < 0.5)
+        ofNotifyEvent(Globals::makeRandomOkimochiSoundEvent);
 }
 
 void ofApp::keyReleased(int key){}

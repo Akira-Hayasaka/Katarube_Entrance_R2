@@ -6,6 +6,7 @@
 #include "ofxTweenzor.h"
 #include "ofxLayer.h"
 #include "ofxPostGlitch.h"
+#include "ofxBpm.h"
 
 #include "Utils.h"
 #include "Constants.h"
@@ -44,10 +45,12 @@ private:
     void drawRight();
     void updateGlitch();
     void onIntensityChanged(float& intensity);
+    void onBeat();
     
     GUI gui;
     
     SE se;
+    ofxBpm bpm;    
 
     ofxLayer::Manager lMgmt;
     Deforming* deforming;
@@ -66,4 +69,5 @@ private:
     // debug
     bool bDrawTiny;
     bool bDrawBigRight;
+    float beatAlpha;
 };

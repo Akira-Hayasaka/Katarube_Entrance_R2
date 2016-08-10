@@ -30,14 +30,22 @@ class SE
 public:
     
     void setup();
+    void update();
     void makeRdmMorphSound();
     void makeRdmAttackSound();
+    void makeRdmPianoSound();
+    void makeRdmOkimochiSound();
     
 private:
     
     Sound drone;
+    Sound okimochi;
     vector<Sound> morph;
     vector<Sound> attack;
+    vector<Sound> piano;
+    vector<Sound> sigh;
+    
+    float okimochiVol;
 };
 
 #endif /* SE_hpp */

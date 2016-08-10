@@ -75,6 +75,7 @@
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E68F33FFBC7F06E5AA6CA08E /* LinearAlgebra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35EDCBDDC418E12FB4B1D315 /* LinearAlgebra.cpp */; };
 		E9F778B71D56F3890072BE16 /* SE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778B51D56F3890072BE16 /* SE.cpp */; settings = {ASSET_TAGS = (); }; };
+		E9F778BE1D5AA6180072BE16 /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778BC1D5AA6180072BE16 /* ofxBpm.cpp */; settings = {ASSET_TAGS = (); }; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
 		FAF56D62CD9CC8FC64320442 /* WmlLinearSystemExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB38C1864350FE4A17F18D /* WmlLinearSystemExt.cpp */; };
 		FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */; };
@@ -425,6 +426,8 @@
 		E9845C839527B8DF7613D49D /* CNInstance.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = CNInstance.cpp; path = src/CurlNoiseInstanced/CNInstance.cpp; sourceTree = SOURCE_ROOT; };
 		E9F778B51D56F3890072BE16 /* SE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SE.cpp; path = Util/SE.cpp; sourceTree = "<group>"; };
 		E9F778B61D56F3890072BE16 /* SE.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = SE.hpp; path = Util/SE.hpp; sourceTree = "<group>"; };
+		E9F778BC1D5AA6180072BE16 /* ofxBpm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBpm.cpp; sourceTree = "<group>"; };
+		E9F778BD1D5AA6180072BE16 /* ofxBpm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBpm.h; sourceTree = "<group>"; };
 		EABECCA10B3B22B8DD9090CB /* Helpers.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = Helpers.h; path = addons/ofxCv/libs/ofxCv/include/ofxCv/Helpers.h; sourceTree = SOURCE_ROOT; };
 		EBBA82550412B77EFA70AE87 /* funcattrib.hpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = funcattrib.hpp; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/gpu/device/funcattrib.hpp; sourceTree = SOURCE_ROOT; };
 		ECC34C470C60F0A2AE2761B1 /* random.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = random.h; path = ../../../addons/ofxOpenCv/libs/opencv/include/opencv2/flann/random.h; sourceTree = SOURCE_ROOT; };
@@ -837,6 +840,7 @@
 		6948EE371B920CB800B5AC1A /* local_addons */ = {
 			isa = PBXGroup;
 			children = (
+				E9F778BA1D5AA6180072BE16 /* ofxBpm */,
 				40694B518C0E85CF62A9A412 /* ofxCv */,
 				E3979D14CA0DF5A9A36DD7CA /* ofxPuppet */,
 				CEFC4DC0093F3C0F57BC4219 /* ofxTriangleMesh */,
@@ -1355,6 +1359,24 @@
 			name = openFrameworks;
 			sourceTree = "<group>";
 		};
+		E9F778BA1D5AA6180072BE16 /* ofxBpm */ = {
+			isa = PBXGroup;
+			children = (
+				E9F778BB1D5AA6180072BE16 /* src */,
+			);
+			name = ofxBpm;
+			path = addons/ofxBpm;
+			sourceTree = "<group>";
+		};
+		E9F778BB1D5AA6180072BE16 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E9F778BC1D5AA6180072BE16 /* ofxBpm.cpp */,
+				E9F778BD1D5AA6180072BE16 /* ofxBpm.h */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
 		ED977EFE7B82B0D53CB5C778 /* superres */ = {
 			isa = PBXGroup;
 			children = (
@@ -1541,6 +1563,7 @@
 				409CDE846F1D2E4286575F9D /* WmlVector2.cpp in Sources */,
 				6A28E62010442032F0F51E9A /* WmlVector3.cpp in Sources */,
 				DB5ACEAD8D937B5DC0200B20 /* WmlVector4.cpp in Sources */,
+				E9F778BE1D5AA6180072BE16 /* ofxBpm.cpp in Sources */,
 				8597AAE664035165FF3EC2AF /* ofxTriangleMesh.cpp in Sources */,
 				680BD98E1553AFB900A4AC7D /* triangle.cpp in Sources */,
 				59FB1675C4625BE8414E6644 /* ofxLayer.cpp in Sources */,

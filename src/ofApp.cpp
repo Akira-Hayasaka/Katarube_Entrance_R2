@@ -39,7 +39,6 @@ void ofApp::setup()
     
     lMgmt.setup(APP_W, APP_H);
     deforming = lMgmt.createLayer<Deforming>(1.0);
-
     nowExibit = lMgmt.createLayer<NowExibit>(1.0);
     texFlow = lMgmt.createLayer<TexFlow>(1.0);
     soundThing = lMgmt.createLayer<SoundThing>(1.0);

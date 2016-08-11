@@ -25,8 +25,11 @@ void TexFlow::update()
 
 void TexFlow::draw()
 {
-    ofPushMatrix();
-    ofTranslate(Globals::cniParams->offset);
-    cni->draw(Globals::cam.get());
-    ofPopMatrix();
+    if (Globals::testTex.isAllocated())
+    {
+        ofPushMatrix();
+        ofTranslate(Globals::cniParams->offset);
+        cni->draw(Globals::cam.get());
+        ofPopMatrix();
+    }
 }

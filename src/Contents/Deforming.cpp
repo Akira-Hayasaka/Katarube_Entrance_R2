@@ -45,13 +45,28 @@ void Deforming::setup()
 
 void Deforming::update()
 {
-    deformTo->update();
-    restoreFrom->update();
-    checkDeformBegin();
+    int numDone = 0;
+    for (auto p : storedPuppets)
+    {
+        if (p->isInited())
+            numDone++;
+    }
     
-    rot.x -= 0.05;
-    rot.y -= 0.05;
-    rot.z -= 0.05;
+    if (numDone < storedPuppets.size())
+    {
+        for (auto& p : storedPuppets)
+            p->update();
+    }
+    else
+    {
+        deformTo->update();
+        restoreFrom->update();
+        checkDeformBegin();
+        
+        rot.x -= 0.05;
+        rot.y -= 0.05;
+        rot.z -= 0.05;
+    }
 }
 
 void Deforming::draw()

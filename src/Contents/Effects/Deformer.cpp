@@ -10,6 +10,7 @@
 
 void Deformer::setup(string filePath, ContourFinderSettings settings)
 {
+    this->filePath = filePath;
     ofDisableArbTex();
     ofLoadImage(origTex, filePath);
     ofEnableArbTex();
@@ -109,13 +110,38 @@ void Deformer::setup(string filePath, ContourFinderSettings settings)
         }
     }
     
-    puppetWarp.update();
     bMorphing = false;
     type = NONE;
+    initState = NOTYET;
+    startThread();
+}
+
+void Deformer::threadedFunction()
+{
+    while (isThreadRunning())
+    {
+        if (initState == NOTYET)
+        {
+            puppetWarp.update();
+            initState = UPDATED;
+            ofLog() << "done warp process for " << filePath;
+        }
+        ofSleepMillis(1000 * 0.1);
+    }
 }
 
 void Deformer::update()
 {
+    if (initState == UPDATED)
+    {
+        waitForThread(true);
+        initState = DONE;
+        ofLog() << "initState = DONE; for " << filePath;
+    }
+    
+    if (initState != DONE)
+        return;
+    
     if (bMorphing)
     {
         for (auto mp : morphProgresses)
@@ -221,6 +247,9 @@ void Deformer::update()
 
 void Deformer::makeReadyToDeform(ofPolyline deformTo)
 {
+    if (initState != DONE)
+        return;
+    
     deformOutline = deformTo;
     
     alignNumVerts();
@@ -246,6 +275,9 @@ void Deformer::makeReadyToDeform(ofPolyline deformTo)
 
 void Deformer::makeReadyToRestore(ofPolyline restoreFrom)
 {
+    if (initState != DONE)
+        return;
+    
     deformOutline = restoreFrom;
 
     alignNumVerts();
@@ -278,6 +310,9 @@ void Deformer::makeReadyToRestore(ofPolyline restoreFrom)
 
 void Deformer::start()
 {
+    if (initState != DONE)
+        return;
+    
     for (int i = 0; i < morphProgresses.size(); i++)
     {
         Tweenzor::add(&morphProgresses.at(i).pts, morphProgresses.at(i).pts,
@@ -321,6 +356,9 @@ void Deformer::start()
 
 void Deformer::draw(ofVec3f rot)
 {
+    if (initState != DONE)
+        return;
+    
     if (bMorphing)
     {
         if (type == DEFORM)

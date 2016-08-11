@@ -47,7 +47,7 @@ static bool compAngle(const IdxAngle& p1, const IdxAngle& p2)
     return p1.ang < p2.ang;
 }
 
-class Deformer
+class Deformer : public ofThread
 {
 public:
     
@@ -57,6 +57,14 @@ public:
         bool holes;
     };
     
+    enum INITSTATE
+    {
+        NOTYET,
+        UPDATED,
+        DONE
+    };
+    INITSTATE initState;
+    
     void setup(string filePath, ContourFinderSettings settings);
     void update();
     void makeReadyToDeform(ofPolyline deformTo);
@@ -65,8 +73,13 @@ public:
     void draw(ofVec3f rot);
     
     ofPolyline getOutline() { return outline; }
+    bool isInited() { return (initState == DONE) ? true : false; }
     
     ofEvent<void> finEvent;
+    
+protected:
+    
+    void threadedFunction();
     
 private:
     
@@ -90,6 +103,7 @@ private:
     const float morphDur = 1.8;
     const float totalDur = 5.0;
 
+    string filePath;
     bool bDone;
     bool bMorphing;
     float startMorphingTime;

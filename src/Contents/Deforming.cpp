@@ -73,6 +73,11 @@ void Deforming::update()
 
 void Deforming::draw()
 {
+	//ofPushStyle();
+	//ofSetColor(ofColor::cyan);
+	//ofDrawRectangle(0, 0, APP_W, APP_H);
+	//ofPopStyle();
+
     deformTo->draw(rot);
     restoreFrom->draw(rot);
 }

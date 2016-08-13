@@ -225,7 +225,7 @@ void ofApp::updateGlitch()
 void ofApp::mouseMoved(int x, int y)
 {
     float intensity = ofMap(ofGetMouseX(), 0, 1920, 0, 1.0, true);
-    ofNotifyEvent(Globals::intensityChangedEvent, intensity);
+    //ofNotifyEvent(Globals::intensityChangedEvent, intensity);
 }
 
 void ofApp::onIntensityChanged(float& intensity)

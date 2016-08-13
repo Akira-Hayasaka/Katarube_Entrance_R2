@@ -65,7 +65,7 @@ public:
     };
     INITSTATE initState;
     
-    void setup(string filePath, ContourFinderSettings settings);
+    void setup(string filePath, ContourFinderSettings settings, int idx);
     void update();
     void makeReadyToDeform(ofPolyline deformTo);
     void makeReadyToRestore(ofPolyline restoreFrom);
@@ -102,6 +102,8 @@ private:
     const int numOutlineVts = 250;
     const float morphDur = 1.8;
     const float totalDur = 5.0;
+
+	int idx;
 
     string filePath;
     bool bDone;

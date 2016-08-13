@@ -9,7 +9,7 @@
 int main()
 {
     ofGLFWWindowSettings settings;
-    settings.width = APP_W;
+    settings.width = APP_W + 1920;
     settings.height = APP_H;
     settings.multiMonitorFullScreen = true;
     settings.windowMode = OF_FULLSCREEN;

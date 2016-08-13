@@ -76,7 +76,7 @@ void ofApp::setup()
     
     ofAddListener(Globals::intensityChangedEvent, this, &ofApp::onIntensityChanged);
     ofAddListener(bpm.beatEvent, this, &ofApp::onBeat);
-    
+
     // debug
     bDrawTiny = false;
     bDrawBigRight = false;
@@ -102,6 +102,9 @@ void ofApp::update()
 
 void ofApp::draw()
 {
+	ofPushMatrix();
+	ofTranslate(1920, 0);
+
     ofStyle s = ofGetStyle();
     glEnable(GL_BLEND);
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
@@ -126,6 +129,8 @@ void ofApp::draw()
     }
     glDisable(GL_BLEND);
     ofSetStyle(s);
+
+	ofPopMatrix();
     
     gui.draw();
     

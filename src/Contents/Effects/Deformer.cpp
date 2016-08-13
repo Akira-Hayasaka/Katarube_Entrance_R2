@@ -8,9 +8,11 @@
 
 #include "Deformer.hpp"
 
-void Deformer::setup(string filePath, ContourFinderSettings settings)
+void Deformer::setup(string filePath, ContourFinderSettings settings, int idx)
 {
     this->filePath = filePath;
+	this->idx = idx;
+
     ofDisableArbTex();
     ofLoadImage(origTex, filePath);
     ofEnableArbTex();
@@ -110,10 +112,24 @@ void Deformer::setup(string filePath, ContourFinderSettings settings)
         }
     }
     
-    bMorphing = false;
-    type = NONE;
-    initState = NOTYET;
-    startThread();
+	bMorphing = false;
+	type = NONE;
+	if (idx < 1)
+	{
+		initState = NOTYET;
+		startThread(false);
+	}
+	else
+	{
+		initState = DONE;
+	}
+
+    //bMorphing = false;
+    //type = NONE;
+ //   initState = NOTYET;
+
+ //   //startThread();
+	//initState = DONE;
 }
 
 void Deformer::threadedFunction()

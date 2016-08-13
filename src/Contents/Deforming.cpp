@@ -10,6 +10,7 @@
 
 void Deforming::setup()
 {
+	int idx = 0;
     masterDir.open("imgs/deform");
     masterDir.listDir();
     for (int i = 0; i < masterDir.size(); i++)
@@ -23,8 +24,9 @@ void Deforming::setup()
             cfs.maxArea = Globals::maxArea;
             cfs.threshold = Globals::threshold;
             cfs.holes = Globals::holes;
-            p->setup(f.getAbsolutePath(), cfs);
+            p->setup(f.getAbsolutePath(), cfs, idx);
             storedPuppets.push_back(p);
+			idx++;
         }
     }
     

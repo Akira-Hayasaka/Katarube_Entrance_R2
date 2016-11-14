@@ -176,11 +176,13 @@ void ofApp::keyPressed(int key)
 void ofApp::drawLeft()
 {
     lMgmt.getFramebuffer().getTexture().drawSubsection(0, 0, ONESCRN_W, ONESCRN_H, 0, 0);
+	//ofDrawRectangle(0, 0, ONESCRN_W, ONESCRN_H);
 }
 
 void ofApp::drawRight()
 {
     lMgmt.getFramebuffer().getTexture().drawSubsection(0, 0, ONESCRN_W, ONESCRN_H, ONESCRN_W, 0);
+	//ofDrawRectangle(0, 0, ONESCRN_W, ONESCRN_H);
 }
 
 void ofApp::updateGlitch()

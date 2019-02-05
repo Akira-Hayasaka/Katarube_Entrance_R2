@@ -59,15 +59,15 @@ static float shapedMap(float val,
     return rval;
 }
 
-static vector<ofPoint> getCircularPts(float pRadius, ofPoint orig, int devide)
+static vector<glm::vec3> getCircularPts(float pRadius, ofPoint orig, int devide)
 {
     float angle = PI * 2 / devide;
     
-    vector<ofPoint> rtn;
+    vector<glm::vec3> rtn;
     for (int i = 0; i < devide; i++)
     {
-        ofPoint p(orig.x + pRadius * cos(angle * i),
-                  orig.y + pRadius * sin(angle * i));
+		glm::vec3 p(orig.x + pRadius * cos(angle * i),
+                  orig.y + pRadius * sin(angle * i), 0.);
         rtn.push_back(p);
     }
     return rtn;

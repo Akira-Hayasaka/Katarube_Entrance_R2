@@ -64,15 +64,12 @@ void ofxQuadWarp::disableMouseControls() {
         return;
     }
     bMouseEnabled = false;
-    try {
-        ofRemoveListener(ofEvents().mouseMoved, this, &ofxQuadWarp::onMouseMoved);
-        ofRemoveListener(ofEvents().mousePressed, this, &ofxQuadWarp::onMousePressed);
-        ofRemoveListener(ofEvents().mouseDragged, this, &ofxQuadWarp::onMouseDragged);
-        ofRemoveListener(ofEvents().mouseReleased, this, &ofxQuadWarp::onMouseReleased);
-    }
-    catch(Poco::SystemException) {
-        return;
-    }
+    
+    ofRemoveListener(ofEvents().mouseMoved, this, &ofxQuadWarp::onMouseMoved);
+    ofRemoveListener(ofEvents().mousePressed, this, &ofxQuadWarp::onMousePressed);
+    ofRemoveListener(ofEvents().mouseDragged, this, &ofxQuadWarp::onMouseDragged);
+    ofRemoveListener(ofEvents().mouseReleased, this, &ofxQuadWarp::onMouseReleased);
+    
 }
 
 void ofxQuadWarp::enableKeyboardShortcuts() {
@@ -88,12 +85,9 @@ void ofxQuadWarp::disableKeyboardShortcuts() {
         return;
     }
     bKeyboardShortcuts = false;
-    try {
-        ofRemoveListener(ofEvents().keyPressed, this, &ofxQuadWarp::keyPressed);
-    }
-    catch(Poco::SystemException) {
-        return;
-    }
+    
+    ofRemoveListener(ofEvents().keyPressed, this, &ofxQuadWarp::keyPressed);
+    
 }
 
 //----------------------------------------------------- source / target points.
@@ -411,78 +405,54 @@ bool ofxQuadWarp::isShowing() {
 
 //----------------------------------------------------- save / load.
 void ofxQuadWarp::save(const string& path) {
-    ofXml xml;
-    xml.addChild("quadwarp");
-    xml.setTo("quadwarp");
-    xml.addChild("src");
-    xml.setTo("src");
-    for(int i=0; i<4; i++) {
-        xml.addChild("point");
-        xml.setToChild(i);
-        xml.setAttribute("x", ofToString(srcPoints[i].x));
-        xml.setAttribute("y", ofToString(srcPoints[i].y));
-        xml.setToParent();
-    }
-    xml.setToParent();
-    xml.addChild("dst");
-    xml.setTo("dst");
-    for(int i=0; i<4; i++) {
-        xml.addChild("point");
-        xml.setToChild(i);
-        xml.setAttribute("x", ofToString(dstPoints[i].x));
-        xml.setAttribute("y", ofToString(dstPoints[i].y));
-        xml.setToParent();
-    }
-    xml.setToParent();
-    
-    xml.setToParent();
-    xml.save(path);
+
+	ofxXmlSettings xml;
+	xml.addTag("quadwarp");
+	xml.pushTag("quadwarp");
+	xml.addTag("src");
+	xml.pushTag("src");
+	for (int i = 0; i < 4; i++) 
+	{
+		xml.addTag("point");
+		xml.addAttribute("point", "x", ofToString(srcPoints[i].x), i);
+		xml.addAttribute("point", "y", ofToString(srcPoints[i].y), i);
+	}
+	xml.popTag();
+	xml.addTag("dst");
+	xml.pushTag("dst");
+	for (int i = 0; i < 4; i++)
+	{
+		xml.addTag("point");
+		xml.addAttribute("point", "x", ofToString(dstPoints[i].x), i);
+		xml.addAttribute("point", "y", ofToString(dstPoints[i].y), i);
+	}
+	xml.popTag();
+	xml.popTag();
+
+	xml.save(path);
 }
 
 void ofxQuadWarp::load(const string& path) {
-    ofXml xml;
-    bool bOk = xml.load(path);
-    if(bOk == false) {
-        return;
-    }
-    
-    bOk = xml.setTo("quadwarp");
-    if(bOk == false) {
-        return;
-    }
-    
-    bOk = xml.setTo("src");
-    if(bOk == false) {
-        return;
-    }
-    
-    for(int i=0; i<xml.getNumChildren(); i++) {
-        bOk = xml.setToChild(i);
-        if(bOk == false) {
-            continue;
-        }
-        srcPoints[i].x = ofToFloat(xml.getAttribute("x"));
-        srcPoints[i].y = ofToFloat(xml.getAttribute("y"));
-        xml.setToParent();
-    }
-    xml.setToParent();
-    
-    bOk = xml.setTo("dst");
-    if(bOk == false) {
-        return;
-    }
-    
-    for(int i=0; i<xml.getNumChildren(); i++) {
-        bOk = xml.setToChild(i);
-        if(bOk == false) {
-            continue;
-        }
-        dstPoints[i].x = ofToFloat(xml.getAttribute("x"));
-        dstPoints[i].y = ofToFloat(xml.getAttribute("y"));
-        xml.setToParent();
-    }
-    xml.setToParent();
-    xml.setToParent();
+
+	ofxXmlSettings xml;
+	if (!xml.load(path)) return;
+
+	xml.pushTag("quadwarp");
+	xml.pushTag("src");
+	for (auto i = 0; i < xml.getNumTags("point"); i++) 
+	{
+		srcPoints[i].x = xml.getAttribute("point", "x", 0.0, i);
+		srcPoints[i].y = xml.getAttribute("point", "y", 0.0, i);
+	}
+	xml.popTag();
+	xml.pushTag("dst");
+	for (auto i = 0; i < xml.getNumTags("point"); i++)
+	{
+		dstPoints[i].x = xml.getAttribute("point", "x", 0.0, i);
+		dstPoints[i].y = xml.getAttribute("point", "y", 0.0, i);
+	}
+	xml.popTag();
+	xml.popTag();
 }
 
 //----------------------------------------------------- show / hide.

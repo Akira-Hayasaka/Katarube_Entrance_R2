@@ -13,26 +13,44 @@ using namespace cv;
 
 void SoundThing::setup()
 {
-    soundStream.printDeviceList();
-    int bufferSize = 256;
-    left.assign(bufferSize, 0.0);
-    right.assign(bufferSize, 0.0);
-    volHistory.assign(numHistory, 0.0);
-    soundStream.setInput(this);
+	soundStream.printDeviceList();
+	int bufferSize = 256;
+	left.assign(bufferSize, 0.0);
+	right.assign(bufferSize, 0.0);
+	volHistory.assign(numHistory, 0.0);
+	
 
-    bFound = false;
+	bFound = false;
 	vector<ofSoundDevice> devices = soundStream.getDeviceList();
 	for (auto device : devices)
 	{
-        if (ofIsStringInString(device.name, "UAB-80") ||
-            ofIsStringInString(device.name, "UAB_80"))
+		if (ofIsStringInString(device.name, "UAB-80") ||
+			ofIsStringInString(device.name, "UAB_80"))
 		{
+			soundStream.setInput(this);
 			soundStream.setup(0, 2, 44100, bufferSize, 4);
 			soundStream.setDevice(device);
 			ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
-            bFound = true;
+			bFound = true;
 			break;
 		}
+	}
+	if (!bFound)
+	{
+		ofSoundStreamSettings settings;
+		//auto devices = soundStream.getMatchingDevices("default");
+		//if (!devices.empty()) 
+		//	settings.setInDevice(devices[0]);
+		//else
+		//	ofLogError() << "no mic found";
+		settings.setInListener(this);
+		settings.sampleRate = 44100;
+		settings.numOutputChannels = 0;
+		settings.numInputChannels = 2;
+		settings.bufferSize = bufferSize;
+		soundStream.setup(settings);
+		bFound = true;
+		ofLog() << "no UAB-80 found. connect to default mic";
 	}
     
     line.addVertices(getCircularPts(500, ofPoint(0, 0), numHistory));
@@ -72,9 +90,10 @@ void SoundThing::update()
     
     for (int i = 0; i < line.getVertices().size(); i++)
     {
-        ofVec2f dir = (line.getVertices().at(i) - ofVec2f::zero()).normalize();
+        ofVec2f dir = (ofVec2f(line.getVertices().at(i).x, line.getVertices().at(i).y) - ofVec2f::zero()).normalize();
         dir *= volHistory.at(i) * 300;
-        line.getVertices().at(i) = origLine.getVertices().at(i) + dir;
+		ofVec2f res = ofVec2f(origLine.getVertices().at(i).x, origLine.getVertices().at(i).y) + dir;
+        line.getVertices().at(i) = glm::vec3(res.x, res.y, 0.);
     }
 }
 
@@ -115,12 +134,12 @@ void SoundThing::draw()
     ofPopMatrix();
 }
 
-void SoundThing::audioIn(float * input, int bufferSize, int nChannels)
+void SoundThing::audioIn(ofSoundBuffer& input)
 {
     float curVol = 0.0;
     int numCounted = 0;
     
-    for (int i = 0; i < bufferSize; i++)
+    for (int i = 0; i < input.getNumFrames(); i++)
     {
         left[i] = input[i*2] * 0.5;
         right[i] = input[i*2+1] * 0.5;

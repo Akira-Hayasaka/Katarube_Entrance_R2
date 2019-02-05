@@ -65,7 +65,7 @@ void Deformer::setup(string filePath, ContourFinderSettings settings, int idx)
         
         if (outline.size() > 5)
         {
-            vector<ofPoint> linePts = outline.getVertices();
+            vector<glm::vec3> linePts = outline.getVertices();
             vector<ofPoint> alignedPts;
             
             int topLeftIdx = 0;
@@ -415,7 +415,7 @@ void Deformer::draw(ofVec3f rot)
 void Deformer::setCtrlPoints()
 {
     edges.clear();
-    vector<ofPoint> pts = outline.getVertices();
+    vector<glm::vec3> pts = outline.getVertices();
     for (int i = 0; i < pts.size(); i++)
     {
         vector<IdxDist> edgeCandidate;
@@ -423,7 +423,7 @@ void Deformer::setCtrlPoints()
         {
             IdxDist idist;
             idist.idx = j;
-            idist.dist = puppetWarp.getOriginalMesh().getVertices().at(j).distance(pts.at(i));
+            idist.dist = glm::distance(puppetWarp.getOriginalMesh().getVertices().at(j), pts.at(i));
             idist.pts = puppetWarp.getOriginalMesh().getVertices().at(j);
             edgeCandidate.push_back(idist);
         }
@@ -436,8 +436,11 @@ void Deformer::setCtrlPoints()
 void Deformer::getConvexHullEdges(vector<cv::Point> hullEdge)
 {
     ofPolyline hullLine;
-    for (auto p : hullEdge)
-        hullLine.addVertex(ofxCv::toOf(p));
+	for (auto p : hullEdge)
+	{
+		glm::vec2 v = ofxCv::toOf(p);
+        hullLine.addVertex(glm::vec3(v.x, v.y, 0.));
+	}
     hullLine = hullLine.getResampledByCount(6);
     
     for (auto p : hullLine.getVertices())
@@ -453,13 +456,13 @@ void Deformer::getConvexHullEdges(vector<cv::Point> hullEdge)
 
 void Deformer::getCentroid()
 {
-    ofVec2f cen = outline.getCentroid2D();
+    glm::vec3 cen = outline.getCentroid2D();
     vector<IdxDist> centroidCandidate;
     for (int i = 0; i < puppetWarp.getOriginalMesh().getVertices().size(); i++)
     {
         IdxDist idist;
         idist.idx = i;
-        idist.dist = puppetWarp.getOriginalMesh().getVertices().at(i).distance(cen);
+        idist.dist = glm::distance(puppetWarp.getOriginalMesh().getVertices().at(i), cen);
         idist.pts = puppetWarp.getOriginalMesh().getVertices().at(i);
         centroidCandidate.push_back(idist);
     }
@@ -490,7 +493,7 @@ void Deformer::makeCentroidMovePath()
     float angle = PI * 2 / devide;
     
     centroidMovePath.clear();
-    centroidMovePath.addVertex(orig);
+    centroidMovePath.addVertex(glm::vec3(orig.x, orig.y, 0.));
     for (int i = 0; i < devide; i++)
     {
         ofPoint p(orig.x + rad * cos(angle * i),

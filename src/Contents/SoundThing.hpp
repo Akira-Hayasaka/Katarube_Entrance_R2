@@ -29,7 +29,7 @@ public:
     void update();
     void draw();
     
-    void audioIn(float * input, int bufferSize, int nChannels);
+    void audioIn(ofSoundBuffer& input);
     
 private:
     

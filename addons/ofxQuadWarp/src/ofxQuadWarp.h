@@ -7,7 +7,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxXmlSettings.h"
 #include "ofxOpenCv.h"
+#include "calib3d.hpp"
 
 class ofxQuadWarp 
 {

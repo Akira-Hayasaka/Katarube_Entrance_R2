@@ -3,7 +3,7 @@
 void ofApp::setup()
 {
 #ifdef WIN32
-	setLogToFile("logs");
+	//setLogToFile("logs");
 #endif
 
     ofEnableAlphaBlending();

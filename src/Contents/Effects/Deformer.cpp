@@ -375,6 +375,9 @@ void Deformer::draw(ofVec3f rot)
     if (initState != DONE)
         return;
     
+	ofPushMatrix();
+	ofTranslate(-1920, 0);
+
     if (bMorphing)
     {
         if (type == DEFORM)
@@ -410,6 +413,8 @@ void Deformer::draw(ofVec3f rot)
 	glDisable(GL_BLEND);
     ofSetRectMode(OF_RECTMODE_CORNER);
     ofPopMatrix();
+
+	ofPopMatrix();
 }
 
 void Deformer::setCtrlPoints()

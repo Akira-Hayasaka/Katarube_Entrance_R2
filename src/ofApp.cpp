@@ -114,18 +114,7 @@ void ofApp::draw()
     }
     else
     {
-        ofPushMatrix();
-        ofMultMatrix(Globals::projMats.at(0));
-        if (bDrawBigRight)
-            drawRight();
-        else
-            drawLeft();
-        ofPopMatrix();
-        
-        ofPushMatrix();
-        ofMultMatrix(Globals::projMats.at(1));
-        drawRight();
-        ofPopMatrix();
+		lMgmt.getFramebuffer().draw(-1920, 0);
     }
     glDisable(GL_BLEND);
     ofSetStyle(s);

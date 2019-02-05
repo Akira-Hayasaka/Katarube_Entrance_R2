@@ -18,42 +18,15 @@ void SoundThing::setup()
 	right.assign(bufferSize, 0.0);
 	volHistory.assign(numHistory, 0.0);
 
-	bFound = false;
-	soundStream.printDeviceList();
-	auto devices = soundStream.getDeviceList();
-	ofLog() << "num device = " << devices.size();
-	for (auto device : devices)
-	{
-		ofLog() << "device.name = " << device.name;
-		//if (ofIsStringInString(device.name, "UAB-80") ||
-		//	ofIsStringInString(device.name, "UAB_80"))
-		//{
-		//	ofSoundStreamSettings settings;
-		//	settings.setInDevice(device);
-		//	settings.setInListener(this);
-		//	settings.sampleRate = 44100;
-		//	settings.numOutputChannels = 0;
-		//	settings.numInputChannels = 2;
-		//	settings.bufferSize = bufferSize;
-		//	soundStream.setup(settings);
-		//	ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
-		//	bFound = true;
-		//	break;
-		//}
-	}
-	if (!bFound)
-	{
-		ofSoundStreamSettings settings;
-		settings.setInListener(this);
-		settings.sampleRate = 44100;
-		settings.numOutputChannels = 0;
-		settings.numInputChannels = 2;
-		settings.bufferSize = bufferSize;
-		soundStream.setup(settings);
-		bFound = true;
-		ofLog() << "no UAB-80 found. connect to default mic";
-	}
-    
+	ofSoundStreamSettings settings;
+	settings.setInListener(this);
+	settings.sampleRate = 44100;
+	settings.numOutputChannels = 0;
+	settings.numInputChannels = 2;
+	settings.bufferSize = bufferSize;
+	soundStream.setup(settings);
+	bFound = true;
+
     line.addVertices(getCircularPts(500, ofPoint(0, 0), numHistory));
     line.setClosed(true);
     origLine = line;
@@ -127,7 +100,7 @@ void SoundThing::draw()
     path.draw();
     ofSetColor(ofColor::white, 180);
     ofDrawLine(ofVec2f::zero(), line.getVertices().front());
-    ofSetColor(ofColor::white);
+    ofSetColor(ofColor::white, 150);
     line.draw();
     ofPopStyle();
     

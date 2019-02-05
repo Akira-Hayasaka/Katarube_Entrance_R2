@@ -24,7 +24,7 @@ void NowExibit::draw()
 {
     ofPushMatrix();
     ofSetRectMode(OF_RECTMODE_CENTER);
-    ofTranslate(ONESCRN_W/2, ONESCRN_H/2);
+    ofTranslate(ONESCRN_W/2, ONESCRN_H/2 + 350);
 //    ofRotateX(rot.x);
 //    ofRotateY(rot.y);
 //    ofRotateZ(rot.z);

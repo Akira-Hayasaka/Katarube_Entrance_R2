@@ -110,7 +110,7 @@ void ofApp::draw()
     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
     if (bDrawTiny)
     {
-        lMgmt.getFramebuffer().draw(0, 0, APP_W * 0.5, APP_H * 0.5);
+        lMgmt.getFramebuffer().draw(-1920, 0, APP_W * 0.5, APP_H * 0.5);
     }
     else
     {

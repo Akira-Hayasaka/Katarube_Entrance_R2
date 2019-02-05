@@ -19,6 +19,8 @@
 #include "SoundThing.hpp"
 #include "TexFlow.hpp"
 
+#include "Watchdog_Responder.h"
+
 class ofApp : public ofBaseApp
 {
 public:
@@ -70,4 +72,6 @@ private:
     bool bDrawTiny;
     bool bDrawBigRight;
     float beatAlpha;
+
+	unique_ptr<WatchDog_Responder> wdr;
 };

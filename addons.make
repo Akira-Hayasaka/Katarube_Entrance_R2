@@ -1,5 +1,6 @@
 ofxGui
 ofxOpenCv
+ofxOsc
 ofxXmlSettings
 addons/ofxCv
 addons/ofxPuppet

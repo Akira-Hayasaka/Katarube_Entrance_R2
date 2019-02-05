@@ -81,6 +81,8 @@ void ofApp::setup()
     bDrawTiny = false;
     bDrawBigRight = false;
     beatAlpha = 0.0;
+
+	wdr = make_unique<WatchDog_Responder>(true, 9000, "../../watchdog");
 }
 
 void ofApp::update()

@@ -13,36 +13,37 @@ using namespace cv;
 
 void SoundThing::setup()
 {
-	soundStream.printDeviceList();
 	int bufferSize = 256;
 	left.assign(bufferSize, 0.0);
 	right.assign(bufferSize, 0.0);
 	volHistory.assign(numHistory, 0.0);
-	
 
 	bFound = false;
-	vector<ofSoundDevice> devices = soundStream.getDeviceList();
+	soundStream.printDeviceList();
+	auto devices = soundStream.getDeviceList();
+	ofLog() << "num device = " << devices.size();
 	for (auto device : devices)
 	{
-		if (ofIsStringInString(device.name, "UAB-80") ||
-			ofIsStringInString(device.name, "UAB_80"))
-		{
-			soundStream.setInput(this);
-			soundStream.setup(0, 2, 44100, bufferSize, 4);
-			soundStream.setDevice(device);
-			ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
-			bFound = true;
-			break;
-		}
+		ofLog() << "device.name = " << device.name;
+		//if (ofIsStringInString(device.name, "UAB-80") ||
+		//	ofIsStringInString(device.name, "UAB_80"))
+		//{
+		//	ofSoundStreamSettings settings;
+		//	settings.setInDevice(device);
+		//	settings.setInListener(this);
+		//	settings.sampleRate = 44100;
+		//	settings.numOutputChannels = 0;
+		//	settings.numInputChannels = 2;
+		//	settings.bufferSize = bufferSize;
+		//	soundStream.setup(settings);
+		//	ofLog() << "sound stream connected to " << device.name << " [num in: " << device.inputChannels << " num out: " << device.outputChannels << "]";
+		//	bFound = true;
+		//	break;
+		//}
 	}
 	if (!bFound)
 	{
 		ofSoundStreamSettings settings;
-		//auto devices = soundStream.getMatchingDevices("default");
-		//if (!devices.empty()) 
-		//	settings.setInDevice(devices[0]);
-		//else
-		//	ofLogError() << "no mic found";
 		settings.setInListener(this);
 		settings.sampleRate = 44100;
 		settings.numOutputChannels = 0;

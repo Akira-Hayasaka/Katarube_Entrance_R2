@@ -74,8 +74,8 @@
 		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
 		E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */; };
 		E68F33FFBC7F06E5AA6CA08E /* LinearAlgebra.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 35EDCBDDC418E12FB4B1D315 /* LinearAlgebra.cpp */; };
-		E9F778B71D56F3890072BE16 /* SE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778B51D56F3890072BE16 /* SE.cpp */; settings = {ASSET_TAGS = (); }; };
-		E9F778BE1D5AA6180072BE16 /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778BC1D5AA6180072BE16 /* ofxBpm.cpp */; settings = {ASSET_TAGS = (); }; };
+		E9F778B71D56F3890072BE16 /* SE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778B51D56F3890072BE16 /* SE.cpp */; };
+		E9F778BE1D5AA6180072BE16 /* ofxBpm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E9F778BC1D5AA6180072BE16 /* ofxBpm.cpp */; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
 		FAF56D62CD9CC8FC64320442 /* WmlLinearSystemExt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1EFB38C1864350FE4A17F18D /* WmlLinearSystemExt.cpp */; };
 		FB09C6B2A1DA0EA217240CB8 /* ofxCvGrayscaleImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 057122A817D12571F8C0C7A4 /* ofxCvGrayscaleImage.cpp */; };
@@ -1690,7 +1690,7 @@
 					"../../../addons/ofxKinect/libs/libusb-1.0/lib/osx/usb-1.0.a",
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.11;
 			};
 			name = Debug;
 		};
@@ -1798,7 +1798,7 @@
 					"../../../addons/ofxKinect/libs/libusb-1.0/lib/osx/usb-1.0.a",
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
 				);
-				SDKROOT = macosx;
+				SDKROOT = macosx10.11;
 			};
 			name = Release;
 		};
@@ -1901,6 +1901,7 @@
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				SDKROOT = macosx10.11;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2003,6 +2004,7 @@
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx/opencv.a,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.11;
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};

@@ -9,6 +9,7 @@ void ofApp::setup()
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);
     ofSetVerticalSync(true);
+	ofToggleFullscreen();
 
     Globals::ELAPSED_TIME = ofGetElapsedTimef();
     //Globals::kinect.setup();
@@ -126,12 +127,12 @@ void ofApp::draw()
     gui.draw();
     
     // debug
-    ofPushStyle();
-    ofSetColor(ofColor::white, beatAlpha);
-    ofDrawCircle(20, APP_H - 100, 10);
-    ofPopStyle();
-    ofDrawBitmapStringHighlight("tw:" + ofToString(Tweenzor::getSize()), 10, APP_H - 40);
-    ofDrawBitmapStringHighlight("fps:" + ofToString(ofGetFrameRate(), 2), 10, APP_H - 20);
+    //ofPushStyle();
+    //ofSetColor(ofColor::white, beatAlpha);
+    //ofDrawCircle(20, APP_H - 100, 10);
+    //ofPopStyle();
+    //ofDrawBitmapStringHighlight("tw:" + ofToString(Tweenzor::getSize()), 10, APP_H - 40);
+    //ofDrawBitmapStringHighlight("fps:" + ofToString(ofGetFrameRate(), 2), 10, APP_H - 20);
 }
 
 void ofApp::keyPressed(int key)

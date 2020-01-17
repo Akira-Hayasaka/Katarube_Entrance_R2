@@ -9,7 +9,7 @@ void ofApp::setup()
     ofEnableAlphaBlending();
     ofBackground(ofColor::black);
     ofSetVerticalSync(true);
-	ofToggleFullscreen();
+	//ofToggleFullscreen();
 
     Globals::ELAPSED_TIME = ofGetElapsedTimef();
     //Globals::kinect.setup();
@@ -83,7 +83,7 @@ void ofApp::setup()
     bDrawBigRight = false;
     beatAlpha = 0.0;
 
-	wdr = make_unique<WatchDog_Responder>(true, 9000, "../../watchdog");
+	wdr = make_unique<WatchDog_Responder>(false, 9000, "../../watchdog");
 }
 
 void ofApp::update()
@@ -239,7 +239,8 @@ void ofApp::onBeat()
     beatAlpha = 255;
     float rdm = ofRandomuf();
     if (rdm < 0.3)
-        ofNotifyEvent(Globals::makeRandomPianoSoundEvent);
+        
+		(Globals::makeRandomPianoSoundEvent);
     
     rdm = ofRandomuf();
     if (rdm < 0.5)

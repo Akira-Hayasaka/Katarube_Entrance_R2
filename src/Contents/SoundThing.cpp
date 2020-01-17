@@ -39,6 +39,8 @@ void SoundThing::setup()
 
 void SoundThing::update()
 {
+	audio_update();
+
     volIntensity = ofMap(smoothedVol, 0.0, maxVol, 0.3, 1.0, true);
 
 //    ofVec2f filter(volAccumlated, volAccumlated);
@@ -108,8 +110,25 @@ void SoundThing::draw()
     ofPopMatrix();
 }
 
+void SoundThing::audio_update()
+{
+	float curVol = 0.0;
+
+	if (ofGetKeyPressed('v'))
+		curVol = ofRandom(0.25);
+
+	curVol -= 0.01;
+	if (curVol < 0.0)
+		curVol = 0.0;
+
+	smoothedVol *= 0.93;
+
+	smoothedVol += Globals::micSensitivity * curVol;
+}
+
 void SoundThing::audioIn(ofSoundBuffer& input)
 {
+	ofLog() << "audioIn";
     float curVol = 0.0;
     int numCounted = 0;
     

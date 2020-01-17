@@ -32,6 +32,8 @@ public:
     void audioIn(ofSoundBuffer& input);
     
 private:
+
+	void audio_update();
     
     bool bFound;
     

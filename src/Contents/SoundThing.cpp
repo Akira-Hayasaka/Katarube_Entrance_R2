@@ -35,6 +35,9 @@ void SoundThing::setup()
     
     volIntensity = 0.0;
     rot = 0.0;
+
+	last_audio_update = 0.0;
+	next_audio_update = ofRandom(2.0, 8.0);
 }
 
 void SoundThing::update()
@@ -114,8 +117,15 @@ void SoundThing::audio_update()
 {
 	float curVol = 0.0;
 
-	if (ofGetKeyPressed('v'))
+	//if (ofGetKeyPressed('v'))
+	//	curVol = ofRandom(0.25);
+
+	if (Globals::ELAPSED_TIME - last_audio_update > next_audio_update)
+	{
 		curVol = ofRandom(0.25);
+		last_audio_update = Globals::ELAPSED_TIME;
+		next_audio_update = ofRandom(2.0, 8.0);
+	}
 
 	curVol -= 0.01;
 	if (curVol < 0.0)
@@ -128,7 +138,6 @@ void SoundThing::audio_update()
 
 void SoundThing::audioIn(ofSoundBuffer& input)
 {
-	ofLog() << "audioIn";
     float curVol = 0.0;
     int numCounted = 0;
     

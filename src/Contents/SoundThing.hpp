@@ -56,6 +56,9 @@ private:
     double rot;
     
     const float maxVol = 0.17;
+
+	float last_audio_update;
+	float next_audio_update;
 };
 
 #endif /* SoundThing_hpp */
